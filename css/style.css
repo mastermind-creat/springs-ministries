@@ -1,0 +1,515 @@
+/* Custom CSS for elements not covered by Tailwind */
+        .gradient-text {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-border {
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            background: linear-gradient(to right, white, white);
+        }
+        
+        .gradient-border::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            border-radius: inherit;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox-overlay.active .lightbox-image {
+            transform: scale(1);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .fade-in-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark-mode {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #2d3748 !important;
+            color: #f7fafc !important;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #f7fafc !important;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #cbd5e0 !important;
+        }
+        
+        .dark-mode .gradient-border::after {
+            background: linear-gradient(90deg, #059669 0%, #2563eb 100%);
+        }
+        
+        .preloader {
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .preloader-logo {
+            animation: spin 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .close-modal:hover {
+            color: #1f2937;
+        }
+
+        .dark-mode .close-modal:hover {
+            color: #f3f4f6;
+        }
+
+        /* Photo gallery with descriptions */
+        .photo-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .photo-info {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .photo-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* More photos section */
+        .more-photos {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .more-photos.active {
+            display: block;
+        }
+
+        /* View more button animation */
+        .view-more-btn.active {
+            animation: buttonPulse 1.5s infinite;
+        }
+
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-button i {
+            font-size: 30px;
+        }
+
+        /* Chatbot styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .dark-mode .chatbot-container {
+            background: #2d3748;
+            color: #f7fafc;
+        }
+
+        .chatbot-container.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chatbot-body {
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        .chatbot-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-message.bot {
+            align-items: flex-start;
+        }
+
+        .chatbot-message.user {
+            align-items: flex-end;
+        }
+
+        .chatbot-message-content {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-top: 5px;
+        }
+
+        .chatbot-message.bot .chatbot-message-content {
+            background: #f1f1f1;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+
+        .dark-mode .chatbot-message.bot .chatbot-message-content {
+            background: #4a5568;
+            color: #f7fafc;
+        }
+
+        .chatbot-message.user .chatbot-message-content {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .dark-mode .chatbot-input {
+            border-top: 1px solid #4a5568;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .dark-mode .chatbot-input input {
+            background: #4a5568;
+            border: 1px solid #4a5568;
+            color: #f7fafc;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-toggle i {
+            font-size: 24px;
+        }
+
+        /* Loading button effect */
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 4px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: button-loading-spinner 1s ease infinite;
+        }
+
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* Story cards */
+        .story-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact form */
+        .contact-input {
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+
+        .contact-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .dark-mode .contact-input {
+            background-color: #4a5568;
+            border-color: #4a5568;
+            color: #f7fafc;
+        }
+
+        .dark-mode .contact-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }

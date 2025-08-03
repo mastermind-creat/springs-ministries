@@ -1,0 +1,2383 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Springs Ministries - Hope for Orphans & Widows</title>
+    <meta name="description" content="Springs Ministries is a non-profit organization dedicated to bringing hope and restoration to orphans and widows through education, shelter, and community support.">
+    <meta property="og:title" content="Springs Ministries - Hope for Orphans & Widows">
+    <meta property="og:description" content="Bringing hope and restoration to orphans and widows through compassionate care and community support.">
+    <meta property="og:image" content="https://springsministries.org/images/hero-image.jpg">
+    <meta property="og:url" content="https://springsministries.org">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        teal: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                        },
+                        blue: {
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                        },
+                        coral: {
+                            200: '#fecdd3',
+                            400: '#fb7185',
+                        },
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'button-pulse': 'buttonPulse 1.5s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        buttonPulse: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements not covered by Tailwind */
+        .gradient-text {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-border {
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            background: linear-gradient(to right, white, white);
+        }
+        
+        .gradient-border::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            border-radius: inherit;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox-overlay.active .lightbox-image {
+            transform: scale(1);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .fade-in-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark-mode {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #2d3748 !important;
+            color: #f7fafc !important;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #f7fafc !important;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #cbd5e0 !important;
+        }
+        
+        .dark-mode .gradient-border::after {
+            background: linear-gradient(90deg, #059669 0%, #2563eb 100%);
+        }
+        
+        .preloader {
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .preloader-logo {
+            animation: spin 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .close-modal:hover {
+            color: #1f2937;
+        }
+
+        .dark-mode .close-modal:hover {
+            color: #f3f4f6;
+        }
+
+        /* Photo gallery with descriptions */
+        .photo-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .photo-info {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .photo-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* More photos section */
+        .more-photos {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .more-photos.active {
+            display: block;
+        }
+
+        /* View more button animation */
+        .view-more-btn.active {
+            animation: buttonPulse 1.5s infinite;
+        }
+
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-button i {
+            font-size: 30px;
+        }
+
+        /* Chatbot styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .dark-mode .chatbot-container {
+            background: #2d3748;
+            color: #f7fafc;
+        }
+
+        .chatbot-container.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chatbot-body {
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        .chatbot-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-message.bot {
+            align-items: flex-start;
+        }
+
+        .chatbot-message.user {
+            align-items: flex-end;
+        }
+
+        .chatbot-message-content {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-top: 5px;
+        }
+
+        .chatbot-message.bot .chatbot-message-content {
+            background: #f1f1f1;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+
+        .dark-mode .chatbot-message.bot .chatbot-message-content {
+            background: #4a5568;
+            color: #f7fafc;
+        }
+
+        .chatbot-message.user .chatbot-message-content {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .dark-mode .chatbot-input {
+            border-top: 1px solid #4a5568;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .dark-mode .chatbot-input input {
+            background: #4a5568;
+            border: 1px solid #4a5568;
+            color: #f7fafc;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-toggle i {
+            font-size: 24px;
+        }
+
+        /* Loading button effect */
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 4px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: button-loading-spinner 1s ease infinite;
+        }
+
+        @keyframes button-loading-spinner {
+            from {
+                transform: rotate(0turn);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* Story cards */
+        .story-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact form */
+        .contact-input {
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+
+        .contact-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .dark-mode .contact-input {
+            background-color: #4a5568;
+            border-color: #4a5568;
+            color: #f7fafc;
+        }
+
+        .dark-mode .contact-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+<body class="font-roboto bg-gray-50 dark:bg-gray-900">
+    <!-- Preloader -->
+    <div class="preloader fixed inset-0 w-full h-full flex items-center justify-center bg-white dark:bg-gray-900 z-[9999] transition-opacity duration-500">
+        <div class="preloader-content text-center">
+            <div class="preloader-logo mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 animate-spin" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-poppins font-semibold text-gray-700 dark:text-gray-200">Loading...</h3>
+            <div class="w-24 h-1 bg-gray-200 rounded-full mx-auto mt-4 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-green-500 to-blue-500 progress-bar" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                        <span class="ml-2 text-2xl font-poppins font-bold gradient-text">Springs Ministries</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">About</a>
+                    <a href="#programs" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Programs</a>
+                    <a href="#gallery" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Gallery</a>
+                    <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Contact</a>
+                    <a href="#get-involved" class="nav-link text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Get Involved</a>
+                    <button id="dark-mode-toggle-desktop" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+                        <i class="fas fa-moon dark:hidden text-xl"></i>
+                        <i class="fas fa-sun hidden dark:block text-xl"></i>
+                    </button>
+                    <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Donate Now
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-4 md:hidden">
+                    <button id="dark-mode-toggle" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+                        <i class="fas fa-moon dark:hidden text-xl"></i>
+                        <i class="fas fa-sun hidden dark:block text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg absolute w-full left-0 right-0 transition-all duration-300">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Home</a>
+                    <a href="#about" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">About</a>
+                    <a href="#programs" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Programs</a>
+                    <a href="#gallery" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Gallery</a>
+                    <a href="#contact" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Contact</a>
+                    <a href="#get-involved" class="text-gray-800 dark:text-gray-200 hover:text-green-500 font-medium transition">Get Involved</a>
+                    <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300">
+                        Donate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="parallax bg-cover bg-center absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+        
+        <div class="container mx-auto px-4 z-10 text-center fade-in-section">
+            <h1 class="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
+                Bringing <span class="gradient-text">Hope & Restoration</span> to Orphans and Widows
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                We are committed to transforming lives through compassionate care, education, and sustainable community development.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-pulse-slow">
+                    Donate Now
+                </button>
+                <button class="gradient-border bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Learn More
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#about" class="text-white animate-bounce-slow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- Floating animated elements -->
+        <div class="absolute top-20 left-20 w-8 h-8 rounded-full bg-teal-400 opacity-30 floating"></div>
+        <div class="absolute bottom-40 right-20 w-12 h-12 rounded-full bg-blue-400 opacity-30 floating" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-green-400 opacity-30 floating" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    About <span class="gradient-text">Springs Ministries</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Founded in 2010, Springs Ministries has been a beacon of hope for vulnerable children and widows in underserved communities.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Children at Springs Ministries" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold">Our Story</h3>
+                            <p>From humble beginnings to impacting thousands of lives</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-poppins font-semibold text-gray-800 dark:text-white mb-4">Our Journey</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Springs Ministries was born out of a deep conviction to address the plight of orphans and widows who often face systemic neglect and marginalization. What started as a small initiative has grown into a movement transforming communities.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">How It Started</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            In 2010, our founder, Sarah Johnson, encountered a group of orphaned children living on the streets during a mission trip. Touched by their plight, she started by providing meals for 10 children twice a week from her own kitchen. This small act of compassion planted the seed for what would become Springs Ministries.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Within a year, with the help of volunteers, we established our first children's home, providing shelter, education, and family-like care for 15 orphans. The ministry was officially registered as a non-profit organization in 2011.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-md transition">
+                            <div class="text-green-500 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Our Growth</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">From helping 10 children in 2010 to over 500 annually today</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-md transition">
+                            <div class="text-blue-500 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Our Team</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">50+ dedicated staff and 200 volunteers across 5 locations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What We Do Section -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-poppins font-semibold text-gray-800 dark:text-white mb-6 text-center">What We Do</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                        <div class="text-teal-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Education Programs</h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            We provide quality education through scholarships, school supplies, tutoring programs, and our own learning centers. Our holistic approach ensures children receive both academic instruction and life skills training.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                        <div class="text-purple-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Shelter & Care</h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Our children's homes provide a safe, family-like environment for orphans. We also run foster care programs and work to reunite children with extended family when possible, providing support to ensure their wellbeing.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                        <div class="text-yellow-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Economic Empowerment</h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            We equip widows and vulnerable women with vocational skills, provide microloans for small businesses, and offer financial literacy training to break the cycle of poverty and create sustainable livelihoods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-700 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Our <span class="gradient-text">Core</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Guided by timeless principles that shape everything we do
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-green-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Mission</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        To restore dignity and hope to orphans and widows through comprehensive care, education, and empowerment programs that transform lives and communities.
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-blue-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Vision</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        A world where every orphan and widow experiences love, belonging, and the opportunity to thrive as valued members of society.
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-teal-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Values</h3>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Compassion</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Integrity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Excellence</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Sustainability</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs & Impact Section -->
+    <section id="programs" class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Our <span class="gradient-text">Programs</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Comprehensive initiatives designed to address the multifaceted needs of orphans and widows
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-green-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-2">Education Support</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Scholarships, school supplies, tutoring, and mentorship programs to ensure quality education.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">300+ Students</span>
+                        <button class="text-green-500 hover:text-green-600 text-sm font-medium learn-more-btn" data-program="education">Learn More →</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-blue-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-2">Economic Empowerment</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Vocational training, microloans, and business development for sustainable livelihoods.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">150+ Beneficiaries</span>
+                        <button class="text-blue-500 hover:text-blue-600 text-sm font-medium learn-more-btn" data-program="economic">Learn More →</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/20 dark:to-green-900/20 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-teal-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-2">Shelter & Care</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Safe housing, foster care programs, and family reunification initiatives.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">5 Homes Established</span>
+                        <button class="text-teal-500 hover:text-teal-600 text-sm font-medium learn-more-btn" data-program="shelter">Learn More →</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="text-purple-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-2">Health & Nutrition</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Medical care, nutritional support, and health education programs.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">1,200+ Served</span>
+                        <button class="text-purple-500 hover:text-purple-600 text-sm font-medium learn-more-btn" data-program="health">Learn More →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl p-8 md:p-12 text-white">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="md:w-2/3 mb-8 md:mb-0">
+                        <h3 class="text-2xl md:text-3xl font-poppins font-bold mb-4">Our Impact in Numbers</h3>
+                        <p class="opacity-90">
+                            Every number represents a life touched, a story changed, and hope restored.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full md:w-auto">
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold mb-2 counter" data-target="500">0</div>
+                            <div class="text-sm opacity-80">Children Helped</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold mb-2 counter" data-target="200">0</div>
+                            <div class="text-sm opacity-80">Widows Empowered</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold mb-2 counter" data-target="15">0</div>
+                            <div class="text-sm opacity-80">Communities Reached</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold mb-2 counter" data-target="50">0</div>
+                            <div class="text-sm opacity-80">Dedicated Staff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50 dark:bg-gray-700 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Our <span class="gradient-text">Gallery</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Moments of joy, transformation, and hope captured through our work
+                </p>
+            </div>
+            
+            <!-- Photo Gallery with Descriptions -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Photo 1 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Children learning" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Education Program</h3>
+                        <p class="photo-desc">Children at our learning center receiving quality education and mentorship</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 2 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Women in vocational training" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Vocational Training</h3>
+                        <p class="photo-desc">Widows learning tailoring skills to start their own businesses</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Community gathering" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Community Outreach</h3>
+                        <p class="photo-desc">Weekly community meetings to discuss challenges and solutions</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1529333166447-4f4921cb5bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                         alt="Food distribution" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Nutrition Program</h3>
+                        <p class="photo-desc">Monthly food distribution to vulnerable families in the community</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 5 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Children playing" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Recreation Time</h3>
+                        <p class="photo-desc">Children enjoying playtime at our safe playground facility</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 6 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Graduation ceremony" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Graduation Day</h3>
+                        <p class="photo-desc">Celebrating the achievements of our students completing vocational training</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Photos Section (Hidden by default) -->
+            <div class="more-photos grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Photo 7 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Medical checkup" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Health Clinic</h3>
+                        <p class="photo-desc">Free medical checkups for children in our program</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 8 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                         alt="Computer class" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Digital Literacy</h3>
+                        <p class="photo-desc">Students learning computer skills for future employment</p>
+                    </div>
+                </div>
+                
+                <!-- Photo 9 -->
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                         alt="Group discussion" 
+                         class="w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition gallery-image">
+                    <div class="photo-info">
+                        <h3 class="photo-title">Leadership Training</h3>
+                        <p class="photo-desc">Youth leadership development workshop</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="view-more-btn" class="gradient-border bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    View More Photos
+                </button>
+            </div>
+        </div>
+        
+        <!-- Lightbox -->
+        <div class="lightbox-overlay" id="lightbox">
+            <div class="relative">
+                <img src="" alt="" class="lightbox-image" id="lightbox-image">
+                <button class="absolute top-4 right-4 text-white text-3xl focus:outline-none" id="close-lightbox">
+                    &times;
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Stories of <span class="gradient-text">Hope</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Hear from those whose lives have been transformed through Springs Ministries
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial Card 1 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80"
+                             alt="Sarah K."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">Sarah K.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Widow & Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "After losing my husband, I thought my life was over. Springs Ministries gave me training and a small loan to start my tailoring business. Today, I can feed my children and even employ two other widows. God bless this ministry!"
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="sarah">View More →</button>
+                </div>
+
+                <!-- Testimonial Card 2 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
+                             alt="James M."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">James M.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Former Orphan, Now University Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "I grew up in Springs Ministries' children's home after losing both parents. They didn't just give me shelter, but love, education, and a future. Today I'm studying medicine to give back to others what was given to me."
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="james">View More →</button>
+                </div>
+
+                <!-- Testimonial Card 3 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80"
+                             alt="Grace W."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">Grace W.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Volunteer & Donor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "I've been volunteering with Springs Ministries for 5 years. Seeing the tangible impact of their work - children graduating, widows starting businesses - keeps me coming back. This is where my donations make a real difference."
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="grace">View More →</button>
+                </div>
+            </div>
+
+            <!-- More Stories Section (Hidden by default) -->
+            <div class="more-stories grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6 hidden">
+                <!-- Testimonial Card 4 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                             alt="Michael T."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">Michael T.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Former Beneficiary, Now Staff Member</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "I came to Springs Ministries as a troubled teenager with no direction. Through their mentorship program, I discovered my passion for helping others. Now I'm proud to be part of the team that helps transform lives."
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="michael">View More →</button>
+                </div>
+
+                <!-- Testimonial Card 5 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80"
+                             alt="Esther W."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">Esther W.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Widow & Small Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "The microloan program changed my life. With $200, I started a small grocery business that now supports my family and employs two other women. Springs Ministries believed in me when no one else did."
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="esther">View More →</button>
+                </div>
+
+                <!-- Testimonial Card 6 -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80"
+                             alt="David & Rebecca K."
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-3">
+                            <h4 class="font-poppins font-semibold text-gray-800 dark:text-white text-lg">David & Rebecca K.</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Foster Parents</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm italic mb-4 line-clamp-4">
+                        "Through Springs Ministries' foster program, we've welcomed three children into our home. The support and training they provide has helped us create a loving environment for these precious kids."
+                    </p>
+                    <div class="flex text-yellow-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <button class="view-more-testimonial text-green-500 hover:text-green-600 text-sm font-medium" data-testimonial="david">View More →</button>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12">
+                <button id="view-more-stories-btn" class="gradient-border bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    View More Stories
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-700 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Contact <span class="gradient-text">Us</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    We'd love to hear from you! Reach out with questions, partnership inquiries, or to learn more about our work.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+                <div class="lg:w-1/2">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Send Us a Message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none" required></textarea>
+                            </div>
+                            <button type="submit" class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 w-full">
+                                <span id="submit-text">Send Message</span>
+                                <span id="submit-loading" class="hidden">Sending...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-white mb-1">Our Location</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">123 Charity Avenue, Hope City, HC 12345</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-white mb-1">Phone Numbers</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">+1 (555) 123-4567 (Office)</p>
+                                    <p class="text-gray-600 dark:text-gray-300">+1 (555) 765-4321 (Emergency)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-white mb-1">Email Addresses</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">info@springsministries.org (General Inquiries)</p>
+                                    <p class="text-gray-600 dark:text-gray-300">donations@springsministries.org (Donation Questions)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 dark:bg-yellow-900/30 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 dark:text-white mb-1">Office Hours</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Saturday: 10:00 AM - 2:00 PM</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-100 dark:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-100 hover:text-blue-500 dark:hover:bg-blue-900/30 transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-100 hover:text-blue-400 dark:hover:bg-blue-900/30 transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-pink-100 hover:text-pink-500 dark:hover:bg-pink-900/30 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-red-100 hover:text-red-500 dark:hover:bg-red-900/30 transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 dark:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-green-100 hover:text-green-500 dark:hover:bg-green-900/30 transition">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-gray-800 dark:text-white mb-4">
+                    Get <span class="gradient-text">Involved</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Join us in making a difference in the lives of orphans and widows
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-green-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Donate</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Your financial support helps us provide education, shelter, and empowerment programs to those in need.
+                    </p>
+                    <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300">
+                        Donate Now
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-blue-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Volunteer</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Share your time and skills to make a direct impact in the lives of orphans and widows in our community.
+                    </p>
+                    <button class="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300">
+                        Volunteer Now
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 card-hover-effect">
+                    <div class="text-purple-500 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-poppins font-semibold text-gray-800 dark:text-white mb-3">Spread the Word</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Follow us on social media and share our mission with your network to help us reach more people.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-400 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-pink-500 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-red-500 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gradient-to-r from-green-500 to-blue-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl md:text-3xl font-poppins font-bold mb-4">Stay Updated</h3>
+                    <p class="opacity-90">
+                        Subscribe to our newsletter to receive updates on our programs, success stories, and upcoming events.
+                    </p>
+                </div>
+                <div class="md:w-1/2 w-full">
+                    <form class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-full focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-white text-gray-800 px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                        <span class="ml-2 text-2xl font-poppins font-bold">Springs Ministries</span>
+                    </a>
+                    <p class="text-gray-400 text-sm max-w-md">
+                        We are a non-profit organization dedicated to bringing hope and restoration to orphans and widows through education, shelter, and community support.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                            <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                            <li><a href="#programs" class="hover:text-white transition">Programs</a></li>
+                            <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+                            <li><a href="#get-involved" class="hover:text-white transition">Get Involved</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                        <ul class="text-gray-400 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-2 text-green-500"></i>
+                                <span>123 Charity Ave, Hope City</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-2 text-green-500"></i>
+                                <span>+1 (555) 123-4567</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-2 text-green-500"></i>
+                                <span>info@springsministries.org</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Springs Ministries. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/15551234567" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Springs Ministries Bot</h3>
+            <button class="chatbot-close" id="chatbot-close">&times;</button>
+        </div>
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="chatbot-message bot">
+                <div class="chatbot-message-content">
+                    Hello! I'm here to help you learn more about Springs Ministries. How can I assist you today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message...">
+            <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Program Details Modal -->
+    <div id="program-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-program-modal">&times;</span>
+            <div id="program-modal-content">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div id="testimonial-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-content">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.preloader').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.preloader').style.display = 'none';
+                }, 500);
+            }, 800);
+            
+            // Animate progress bar
+            const progressBar = document.querySelector('.progress-bar');
+            let width = 0;
+            const interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 15);
+            
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCounter, 1);
+                } else {
+                    counter.innerText = target;
+                }
+                
+                function updateCounter() {
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCounter, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeToggleDesktop = document.getElementById('dark-mode-toggle-desktop');
+        
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        }
+        
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        darkModeToggleDesktop.addEventListener('click', toggleDarkMode);
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Gallery lightbox
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeLightbox = document.getElementById('close-lightbox');
+        
+        galleryImages.forEach(image => {
+            image.addEventListener('click', function() {
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+        
+        closeLightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+        
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // View more photos button
+        const viewMoreBtn = document.getElementById('view-more-btn');
+        const morePhotos = document.querySelector('.more-photos');
+        
+        viewMoreBtn.addEventListener('click', function() {
+            morePhotos.classList.toggle('active');
+            viewMoreBtn.classList.toggle('active');
+            
+            if (morePhotos.classList.contains('active')) {
+                viewMoreBtn.textContent = 'Show Less Photos';
+            } else {
+                viewMoreBtn.textContent = 'View More Photos';
+            }
+        });
+
+        // View more stories button
+        const viewMoreStoriesBtn = document.getElementById('view-more-stories-btn');
+        const moreStories = document.querySelector('.more-stories');
+        
+        viewMoreStoriesBtn.addEventListener('click', function() {
+            moreStories.classList.toggle('hidden');
+            viewMoreStoriesBtn.classList.toggle('active');
+            
+            if (moreStories.classList.contains('hidden')) {
+                viewMoreStoriesBtn.textContent = 'View More Stories';
+            } else {
+                viewMoreStoriesBtn.textContent = 'Show Less Stories';
+            }
+        });
+
+        // Testimonial modal
+        const testimonialButtons = document.querySelectorAll('.view-more-testimonial');
+        const testimonialModal = document.getElementById('testimonial-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Testimonial data
+        const testimonials = {
+            sarah: {
+                name: "Sarah K.",
+                role: "Widow & Entrepreneur",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+                quote: "After losing my husband, I thought my life was over. Springs Ministries gave me training and a small loan to start my tailoring business. Today, I can feed my children and even employ two other widows. God bless this ministry!",
+                fullStory: "When my husband passed away suddenly, I was left with three young children and no means to support them. I had no skills and no hope. Then I heard about Springs Ministries' economic empowerment program for widows. They provided me with six months of tailoring training and then gave me a small loan to buy a sewing machine and materials. That was five years ago. Today, I have a thriving tailoring business with two employees (both widows like me) and my oldest daughter is now in university. Springs Ministries didn't just give me a handout - they gave me dignity and the tools to rebuild my life."
+            },
+            james: {
+                name: "James M.",
+                role: "Former Orphan, Now University Student",
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+                quote: "I grew up in Springs Ministries' children's home after losing both parents. They didn't just give me shelter, but love, education, and a future. Today I'm studying medicine to give back to others what was given to me.",
+                fullStory: "I was only 7 years old when I lost both my parents to HIV/AIDS. With no relatives willing to take me in, I was sent to live at Springs Ministries' children's home. What I found there wasn't just a roof over my head, but a family. The house parents treated us all as their own children. They made sure we went to good schools, had proper medical care, and most importantly, knew we were loved. When I showed aptitude in science, they arranged for extra tutoring. Now I'm in my second year of medical school, with a scholarship from Springs Ministries' alumni program. My dream is to become a pediatrician and work with orphans like I once was."
+            },
+            grace: {
+                name: "Grace W.",
+                role: "Volunteer & Donor",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+                quote: "I've been volunteering with Springs Ministries for 5 years. Seeing the tangible impact of their work - children graduating, widows starting businesses - keeps me coming back. This is where my donations make a real difference.",
+                fullStory: "I first heard about Springs Ministries through a friend who was volunteering at their weekend tutoring program. I decided to try it out and was immediately struck by the dedication of the staff and the transformation in the children. What started as a few hours a week turned into a deep commitment. I now lead their donor relations team and volunteer at least twice a week. What keeps me coming back is seeing the long-term impact. The little boy who could barely read when he joined the program is now top of his class. The widow who received a microloan now employs three others. Every dollar donated, every hour volunteered - it all makes a measurable difference. That's why I've included Springs Ministries in my will - I want this work to continue for generations to come."
+            },
+            michael: {
+                name: "Michael T.",
+                role: "Former Beneficiary, Now Staff Member",
+                image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                quote: "I came to Springs Ministries as a troubled teenager with no direction. Through their mentorship program, I discovered my passion for helping others. Now I'm proud to be part of the team that helps transform lives.",
+                fullStory: "At 15, I was living on the streets after running away from an abusive home. Springs Ministries found me during one of their street outreach programs. At first, I resisted their help, but their patience and genuine care broke through my defenses. Through counseling and their youth development program, I discovered my talent for working with younger kids. After completing high school through their education program, I volunteered with their children's programs while attending community college. Today, I'm a full-time youth counselor at Springs Ministries, helping other at-risk youth find their path, just as I did."
+            },
+            esther: {
+                name: "Esther W.",
+                role: "Widow & Small Business Owner",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80",
+                quote: "The microloan program changed my life. With $200, I started a small grocery business that now supports my family and employs two other women. Springs Ministries believed in me when no one else did.",
+                fullStory: "After my husband's death, I struggled to provide for my four children. Banks wouldn't give me a loan because I had no collateral. When I heard about Springs Ministries' microloan program for widows, I applied immediately. After financial literacy training, I received $200 to start a small grocery stand. With hard work and the business skills I learned, I grew that stand into a small store within two years. Today, my business supports my family, pays school fees for all my children, and provides jobs for two other widows in my community. The repayment rate for my loan group is 100% - we all want to pay it forward so other women can get the same opportunity."
+            },
+            david: {
+                name: "David & Rebecca K.",
+                role: "Foster Parents",
+                image: "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80",
+                quote: "Through Springs Ministries' foster program, we've welcomed three children into our home. The support and training they provide has helped us create a loving environment for these precious kids.",
+                fullStory: "After our own children grew up, we felt called to foster but were nervous about taking the step. Springs Ministries' foster parent training program gave us the confidence and skills we needed. Over the past five years, we've fostered three children - two have been successfully reunited with rehabilitated family members, and we're in the process of adopting the third. The ongoing support from Springs Ministries - from counseling services to respite care - has been invaluable. They truly understand that to care for vulnerable children well, you need to care for the caregivers too."
+            }
+        };
+        
+        testimonialButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const testimonialId = this.getAttribute('data-testimonial');
+                const testimonial = testimonials[testimonialId];
+                
+                modalContent.innerHTML = `
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <img src="${testimonial.image}" alt="${testimonial.name}" class="w-full h-auto rounded-lg">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold mb-2">${testimonial.name}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">${testimonial.role}</p>
+                            <blockquote class="text-gray-700 dark:text-gray-200 italic mb-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                "${testimonial.quote}"
+                            </blockquote>
+                            <p class="text-gray-700 dark:text-gray-300">${testimonial.fullStory}</p>
+                        </div>
+                    </div>
+                `;
+                
+                testimonialModal.style.display = "block";
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            testimonialModal.style.display = "none";
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target == testimonialModal) {
+                testimonialModal.style.display = "none";
+            }
+        });
+
+        // Program Details Modal
+        const programButtons = document.querySelectorAll('.learn-more-btn');
+        const programModal = document.getElementById('program-modal');
+        const programModalContent = document.getElementById('program-modal-content');
+        const closeProgramModal = document.getElementById('close-program-modal');
+        
+        // Program data
+        const programs = {
+            education: {
+                title: "Education Support Program",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>',
+                description: "Our Education Support Program ensures that vulnerable children have access to quality education, giving them the tools they need to break the cycle of poverty.",
+                details: `
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Program Components:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>School fee scholarships for primary, secondary, and vocational education</li>
+                                <li>Provision of school uniforms, books, and supplies</li>
+                                <li>After-school tutoring and mentorship programs</li>
+                                <li>Computer literacy training</li>
+                                <li>Career guidance and university preparation for older students</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Impact:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>300+ children currently supported in our education programs</li>
+                                <li>92% pass rate for students in our tutoring program</li>
+                                <li>15 university scholarships awarded annually</li>
+                                <li>2 computer labs established in underserved schools</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">How You Can Help:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Sponsor a child's education ($50/month covers school fees and supplies)</li>
+                                <li>Volunteer as a tutor or mentor</li>
+                                <li>Donate school supplies or laptops</li>
+                                <li>Fund a scholarship for vocational training or university</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            economic: {
+                title: "Economic Empowerment Program",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
+                description: "Our Economic Empowerment Program provides widows and vulnerable women with the skills and resources to achieve financial independence and support their families.",
+                details: `
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Program Components:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Vocational training in tailoring, hairdressing, catering, and other marketable skills</li>
+                                <li>Microloans and business startup grants</li>
+                                <li>Financial literacy and business management training</li>
+                                <li>Savings groups and cooperative development</li>
+                                <li>Market access support and business networking</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Impact:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>150+ women currently in the program</li>
+                                <li>85% business success rate after 3 years</li>
+                                <li>$200 average startup loan grows to $1,500 annual income</li>
+                                <li>300+ children indirectly supported through their mothers' businesses</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">How You Can Help:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Sponsor a woman's vocational training ($300 covers full course)</li>
+                                <li>Contribute to our microloan fund ($200 starts a business)</li>
+                                <li>Volunteer as a business mentor</li>
+                                <li>Purchase products made by program participants</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            shelter: {
+                title: "Shelter & Care Program",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>',
+                description: "Our Shelter & Care Program provides safe, loving homes for orphaned and abandoned children, with a focus on family-based care and reunification when possible.",
+                details: `
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Program Components:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Children's homes with family-style living arrangements</li>
+                                <li>Foster care program with trained foster families</li>
+                                <li>Family tracing and reunification services</li>
+                                <li>Adoption support and counseling</li>
+                                <li>Transition programs for older youth aging out of care</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Impact:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>5 children's homes providing care for 120 children</li>
+                                <li>45 foster families currently caring for children</li>
+                                <li>30+ successful family reunifications annually</li>
+                                <li>15 older youth in our independent living program</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">How You Can Help:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Sponsor a child's care ($75/month covers food, shelter, and basic needs)</li>
+                                <li>Become a foster parent (training provided)</li>
+                                <li>Donate household supplies or clothing</li>
+                                <li>Volunteer at one of our children's homes</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80"
+            },
+            health: {
+                title: "Health & Nutrition Program",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>',
+                description: "Our Health & Nutrition Program ensures that vulnerable children and widows have access to medical care, nutritious food, and health education.",
+                details: `
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Program Components:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Mobile medical clinics serving rural communities</li>
+                                <li>Nutritional support for malnourished children</li>
+                                <li>Health education workshops on hygiene, disease prevention, and maternal health</li>
+                                <li>HIV/AIDS testing and treatment support</li>
+                                <li>Emergency medical fund for critical cases</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Impact:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>1,200+ individuals served annually</li>
+                                <li>85% reduction in malnutrition cases in our program areas</li>
+                                <li>4 mobile clinics operating in underserved regions</li>
+                                <li>500+ HIV-positive individuals receiving support</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">How You Can Help:</h4>
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-2 pl-5 list-disc">
+                                <li>Sponsor a child's nutritional support ($30/month)</li>
+                                <li>Fund a medical outreach ($500 covers a mobile clinic visit)</li>
+                                <li>Donate medical supplies or equipment</li>
+                                <li>Volunteer as a medical professional</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            }
+        };
+        
+        programButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const programId = this.getAttribute('data-program');
+                const program = programs[programId];
+                
+                programModalContent.innerHTML = `
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <div class="flex items-center mb-4">
+                                ${program.icon}
+                                <h3 class="text-2xl font-bold ml-3">${program.title}</h3>
+                            </div>
+                            <img src="${program.image}" alt="${program.title}" class="w-full h-auto rounded-lg mb-4">
+                            <p class="text-gray-600 dark:text-gray-300">${program.description}</p>
+                        </div>
+                        <div class="md:w-2/3">
+                            ${program.details}
+                            <div class="mt-6">
+                                <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300">
+                                    Support This Program
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                programModal.style.display = "block";
+            });
+        });
+        
+        closeProgramModal.addEventListener('click', function() {
+            programModal.style.display = "none";
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target == programModal) {
+                programModal.style.display = "none";
+            }
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotBody = document.getElementById('chatbot-body');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+        
+        // Chatbot questions and answers
+        const chatbotResponses = {
+            "hello": "Hello! How can I help you today? You can ask about our programs, how to donate, volunteer opportunities, or anything else about Springs Ministries.",
+            "hi": "Hi there! What would you like to know about Springs Ministries?",
+            "programs": "We have four main programs: 1) Education Support, 2) Economic Empowerment, 3) Shelter & Care, and 4) Health & Nutrition. Would you like details about any specific program?",
+            "donate": "Thank you for your interest in donating! You can make a one-time or recurring donation through our website. $50 sponsors a child's education for a month, $200 provides a microloan to start a business. Would you like the donation link?",
+            "volunteer": "We welcome volunteers in many areas: teaching, mentoring, medical services, administrative help, and more. Our volunteer application is available online. Would you like more details?",
+            "about": "Springs Ministries was founded in 2010 to help orphans and widows in underserved communities. We now serve over 500 children and 200 widows annually through comprehensive programs. Our mission is to restore hope and dignity through practical assistance and empowerment.",
+            "contact": "You can reach us at:<br>- Phone: +1 (555) 123-4567<br>- Email: info@springsministries.org<br>- Address: 123 Charity Avenue, Hope City<br>Our office hours are Monday-Friday 9am-5pm.",
+            "location": "Our main office is at 123 Charity Avenue in Hope City. We also have program sites in three other communities. Would you like directions or specific location information?",
+            "founder": "Springs Ministries was founded by Sarah Johnson in 2010 after she encountered orphaned children living on the streets during a mission trip. What started as feeding 10 children twice a week has grown into the organization we are today.",
+            "impact": "Last year, we:<br>- Educated 300+ children<br>- Empowered 150+ widows with businesses<br>- Provided shelter for 120 orphans<br>- Served 1,200+ through medical clinics<br>85% of our program participants show measurable improvement in their quality of life.",
+            "default": "I'm sorry, I didn't understand that. Could you rephrase your question? You can ask about our programs, how to help, or general information about Springs Ministries."
+        };
+        
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', function() {
+            chatbotContainer.classList.toggle('active');
+            chatbotContainer.style.display = chatbotContainer.classList.contains('active') ? 'block' : 'none';
+        });
+        
+        chatbotClose.addEventListener('click', function() {
+            chatbotContainer.classList.remove('active');
+            chatbotContainer.style.display = 'none';
+        });
+        
+        // Send message function
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message === '') return;
+            
+            // Add user message to chat
+            addMessage(message, 'user');
+            chatbotInput.value = '';
+            
+            // Process and respond
+            setTimeout(() => {
+                let response = chatbotResponses.default;
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                    response = chatbotResponses.hello;
+                } else if (lowerMessage.includes('program')) {
+                    response = chatbotResponses.programs;
+                } else if (lowerMessage.includes('donat')) {
+                    response = chatbotResponses.donate;
+                } else if (lowerMessage.includes('volunteer')) {
+                    response = chatbotResponses.volunteer;
+                } else if (lowerMessage.includes('about')) {
+                    response = chatbotResponses.about;
+                } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
+                    response = chatbotResponses.contact;
+                } else if (lowerMessage.includes('location') || lowerMessage.includes('address')) {
+                    response = chatbotResponses.location;
+                } else if (lowerMessage.includes('founder') || lowerMessage.includes('start')) {
+                    response = chatbotResponses.founder;
+                } else if (lowerMessage.includes('impact') || lowerMessage.includes('result')) {
+                    response = chatbotResponses.impact;
+                }
+                
+                addMessage(response, 'bot');
+            }, 500);
+        }
+        
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chatbot-message', sender);
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('chatbot-message-content');
+            contentDiv.innerHTML = text;
+            
+            messageDiv.appendChild(contentDiv);
+            chatbotBody.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+        
+        // Event listeners for sending messages
+        chatbotSend.addEventListener('click', sendMessage);
+        
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Initial bot message
+        addMessage(chatbotResponses.hello, 'bot');
+
+        // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            const submitText = document.getElementById('submit-text');
+            const submitLoading = document.getElementById('submit-loading');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitText.classList.add('hidden');
+                submitLoading.classList.remove('hidden');
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                
+                // Simulate form submission (replace with actual AJAX call)
+                setTimeout(() => {
+                    // Here you would typically make an AJAX request to your server
+                    // For example using fetch or axios
+                    
+                    /*
+                    fetch('your-server-endpoint', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle success response
+                        showSuccessMessage();
+                    })
+                    .catch(error => {
+                        // Handle error
+                        showErrorMessage();
+                    });
+                    */
+                    
+                    // For demo purposes, we'll just show success after 1.5 seconds
+                    showSuccessMessage();
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide loading state
+                    submitText.classList.remove('hidden');
+                    submitLoading.classList.add('hidden');
+                }, 1500);
+            });
+
+            function showSuccessMessage() {
+                // Create and show a success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6';
+                successDiv.setAttribute('role', 'alert');
+                
+                const strong = document.createElement('strong');
+                strong.className = 'font-bold';
+                strong.textContent = 'Success!';
+                
+                const span = document.createElement('span');
+                span.className = 'block sm:inline';
+                span.textContent = ' Your message has been sent. We will get back to you soon.';
+                
+                const closeButton = document.createElement('span');
+                closeButton.className = 'absolute top-0 bottom-0 right-0 px-4 py-3';
+                closeButton.innerHTML = '<svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>';
+                
+                closeButton.addEventListener('click', () => {
+                    successDiv.remove();
+                });
+                
+                successDiv.appendChild(strong);
+                successDiv.appendChild(span);
+                successDiv.appendChild(closeButton);
+                
+                // Insert the message above the form
+                const formContainer = contactForm.parentElement;
+                formContainer.insertBefore(successDiv, contactForm);
+                
+                // Remove message after 5 seconds
+                setTimeout(() => {
+                    if (successDiv.parentNode) {
+                        successDiv.remove();
+                    }
+                }, 5000);
+            }
+
+            // Add input styling on focus/blur
+            const contactInputs = document.querySelectorAll('.contact-input');
+            
+            contactInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.classList.add('ring-2', 'ring-blue-500', 'border-transparent');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.classList.remove('ring-2', 'ring-blue-500', 'border-transparent');
+                });
+            });
+
+            // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
